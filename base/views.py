@@ -43,18 +43,18 @@ class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
 
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)  # Only show the logged-in user's tasks
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(
-                title__icontains=search_input)
-         
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+
         context['search_input'] = search_input
-        
         return context
 
 
@@ -82,8 +82,14 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     fields = ['title', 'description', 'complete']
     success_url =reverse_lazy('tasks')
 
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)  # Prevents users from editing other users' tasks
+
 
 class DeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
     success_url =reverse_lazy('tasks')
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)  # Prevents users from editing other users' tasks
