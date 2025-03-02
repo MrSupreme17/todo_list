@@ -51,7 +51,7 @@ class TaskList(LoginRequiredMixin, ListView):
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['tasks'] = context['tasks'].filter(
-                title__startswith=search_input)
+                title__icontains=search_input)
          
         context['search_input'] = search_input
         
@@ -62,6 +62,9 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     context_object_name = 'task'
     template_name = 'base/task.html'
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
