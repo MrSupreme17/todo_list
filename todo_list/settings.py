@@ -118,7 +118,13 @@ LOGIN_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+import os
+
+STATIC_URL = '/static/'  # ✅ Add the leading slash
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'base/static'),  # ✅ Make sure this is included
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
