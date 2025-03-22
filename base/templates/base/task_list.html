@@ -20,13 +20,14 @@
 
 
 <div id="search-add-wrapper">
-    <form method="GET" style="margin-top: 20px;display: flex;">
-        <input type='text' name='search-area' value="{{search_input}}">
+    <form method="GET" style="display: flex;">
+        <input type='text' name='search-area' placeholder="Search your task" value="{{ search_input }}">
         <input class="button" type="submit" value='Search'>
     </form>
+    {% if tasks|length > 0 %}
     <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+    {% endif %}
 </div>
-
 
 
 <div class="task-items-wrapper">

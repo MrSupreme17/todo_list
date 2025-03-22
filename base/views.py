@@ -44,18 +44,20 @@ class TaskList(LoginRequiredMixin, ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)  # Only show the logged-in user's tasks
+        queryset = Task.objects.filter(user=self.request.user)  # Only logged-in user's tasks
+        search_input = self.request.GET.get('search-area', '').strip()  # Get search input safely
+
+        if search_input:
+            queryset = queryset.filter(title__icontains=search_input)  # Filter by search term
+
+        return queryset  # Return the filtered queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['count'] = context['tasks'].filter(complete=False).count()
-
-        search_input = self.request.GET.get('search-area') or ''
-        if search_input:
-            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
-
-        context['search_input'] = search_input
+        context['count'] = self.get_queryset().filter(complete=False).count()
+        context['search_input'] = self.request.GET.get('search-area', '')  # Pass search input
         return context
+
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
