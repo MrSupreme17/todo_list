@@ -44,11 +44,18 @@
         .header-bar {
             display: flex;
             justify-content: space-between;
+            align-items: center; /* Centres items vertically */
             color: #fff;
-            padding: 10px;
-            border-radius: 5px 5px 0 0;
-            background: linear-gradient(90deg, #EEA390 0%, #EB796F 43%, #EB796F 100%);
+            padding: 15px; /* Increased padding for better spacing */
+            border-radius: 8px 8px 0 0;
+            background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); /* New blue gradient */
         }
+
+        .header-bar h1 {
+            font-size: 24px; /* Increased font size */
+            font-weight: bold; /* Make the username bold */
+        }
+
 
         .header-bar a {
             color: rgb(247, 247, 247);
@@ -91,7 +98,7 @@
         .delete-link {
             text-decoration: none;
             font-weight: 900;
-            color: #cf4949;
+            color: #4A90E2;
             font-size: 22px;
             line-height: 0;
         }
@@ -104,10 +111,10 @@
         }
 
         #add-link {
-            color: #EB796F;
+            color: #00b4d8;
             text-decoration: none;
             font-size: 42px;
-            text-shadow: 1px 1px #81413b;
+            text-shadow: 1px 1px #2280ed;
 
         }
 
@@ -131,19 +138,59 @@
         }
 
         .button {
-            border: 1px solid #757575;
-            background-color: #FFF;
-            color: #EB796F;
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
+            border: default; /* Adds default border */
+            background-color: #00b4d8; /* Changes to a solid button */
+            color: white; /* Text is white */
+            padding: 6px 11px; /* More padding for better look */
+            font-size: 15px;
+            border-radius: 8px; /* More rounded */
             cursor: pointer;
-            text-decoration: none;
+            transition: 0.3s; /* Smooth hover effect */
+        }
+
+/* Hover effect: Darker button on hover */
+        .button:hover {
+            background-color: #0077b6;
+        }
+
+/* Input field styles */
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 90%;
+            transition: 0.3s;
+        }
+
+/* Input focus effect */
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        textarea:focus {
+            border-color: #00b4d8;
+            box-shadow: 0px 0px 5px rgba(235, 121, 111, 0.5);
+            outline: none;
         }
 
         .card-body {
             padding: 20px;
         }
+
+        input[type="submit"] {
+            margin-left: 5px; /* Moves the button to the right side */
+            margin-top: 1.5px; /* Moves the button to the bottom */
+            padding: 5px 10px;
+            font-size: 14px;
+            height: 35px;
+            width: auto;
+        }
+
+        .flipped-icon {
+            display: inline-block; /* Ensures it can be transformed */
+            transform: scaleX(-1); /* Flips it horizontally */
+        }
+
     </style>
 </head>
 
