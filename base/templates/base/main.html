@@ -11,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 
     <style>
-        body{
-            background-color:#FAFAFA;
+        body {
+            background-color: #e3f2fd; /* Light blue background */
             font-family: "Nunito Sans", sans-serif;
-            padding-top: 50px;    
+            padding-top: 50px;
         }
 
 
@@ -33,12 +33,14 @@
             color: #4b5156
         }
 
-        .container{
-            max-width: 550px;
-            margin: auto;
+        .container {
+            max-width: 600px; /* Make the card slightly wider */
+            margin: 40px auto; /* Add more space around the card */
             background-color: #fff;
             -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
             box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            border-radius: 10px; /* Rounded corners */
+            padding: 40px; /* More padding inside the card */
         }
 
         .header-bar {
@@ -66,9 +68,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding: 25px; /* Increased padding for more space */
+            margin-bottom: 10px; /* Added margin between task items */
             background-color: #ffff;
             border-top: 1px solid rgb(226, 226, 226);
+            border-radius: 8px; /* Slightly rounded edges */
         }
 
         .task-title {
@@ -79,19 +83,21 @@
             text-decoration: none;
             color: #4b5156;
             margin-left: 10px;
+            font-weight: bold; /* Makes task names bold */
+            font-family: 'Poppins', sans-serif; /* Uses a stylish font */
         }
 
         .task-complete-icon {
             height: 20px;
             width: 20px;
-            background-color: rgb(105, 192, 105);
+            background-color: #0a84ff; /* New colour for completed tasks (Aqua Blue I guess  - Same colour as my theme) */
             border-radius: 50%;
         }
 
         .task-incomplete-icon {
             height: 20px;
             width: 20px;
-            background-color: rgb(218, 218, 218);
+            background-color: #9cc3d5ff; /* New color for incomplete tasks (Aquamarine) */
             border-radius: 50%;
         }
 
@@ -189,6 +195,12 @@
         .flipped-icon {
             display: inline-block; /* Ensures it can be transformed */
             transform: scaleX(-1); /* Flips it horizontally */
+        }
+
+        .completed-task {
+            text-decoration: line-through; /* Strikethrough */
+            font-style: italic; /* Italicized */
+            color: #6c757d; /* Gray color for completed tasks */
         }
 
     </style>
