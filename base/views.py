@@ -41,23 +41,37 @@ class RegisterPage(FormView):
 
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
+    template_name = 'base/task_list.html'
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = Task.objects.filter(user=self.request.user)  # Only logged-in user's tasks
-        search_input = self.request.GET.get('search-area', '').strip()  # Get search input safely
+        queryset = Task.objects.filter(user=self.request.user)
+        search_input = self.request.GET.get('search-area', '').strip()
 
         if search_input:
-            queryset = queryset.filter(title__icontains=search_input)  # Filter by search term
+            queryset = queryset.filter(title__icontains=search_input)
 
-        return queryset  # Return the filtered queryset
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['count'] = self.get_queryset().filter(complete=False).count()
-        context['search_input'] = self.request.GET.get('search-area', '')  # Pass search input
-        return context
+        
+        # Get total and completed tasks
+        total_tasks = Task.objects.filter(user=self.request.user).count()
+        completed_tasks = Task.objects.filter(user=self.request.user, complete=True).count()
 
+        # Calculate the completed percentage
+        if total_tasks > 0:
+            completed_percentage = (completed_tasks / total_tasks) * 100
+        else:
+            completed_percentage = 0  # Avoid division by zero
+
+        # Add data to the context
+        context['completed_percentage'] = completed_percentage
+        context['count'] = total_tasks - completed_tasks  # Number of incomplete tasks
+        context['search_input'] = self.request.GET.get('search-area', '')  # For the search filter
+
+        return context
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):

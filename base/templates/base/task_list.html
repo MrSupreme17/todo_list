@@ -4,7 +4,7 @@
 
 <div class="header-bar">
     <div>
-        <h1>👋 Hello {{request.user|title}}</h1> <!-- Added wave emoji before "Hello" -->
+        <h1>👋 Hello {{request.user|title}}</h1>
         <h3 style="margin:0">You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}</h3>
     </div>
     
@@ -18,7 +18,6 @@
     {% endif %}
 </div>
 
-<!-- Show the Add Task pencil icon regardless of whether there are tasks -->
 <div id="search-add-wrapper">
     <form method="GET" style="display: flex;">
         <input type='text' name='search-area' placeholder="Search your task" value="{{ search_input }}">
@@ -54,6 +53,40 @@
     <h3>No items in list</h3>
     {% endfor %}
 </div>
+
+<!-- Task progress text -->
+<div class="task-progress-wrapper">
+    <div class="progress-header">
+        <span>Task Progress</span>
+        <span>{{ completed_percentage }}%</span>
+    </div>
+</div>
+
+<head>
+    <style>
+        /* Container for Task Progress */
+        .task-progress-wrapper {
+            margin: 1px 0; /* Increased gap from top and bottom */
+            padding: 10px;
+            background-color: none; /* Transparent background */
+            border-radius: 30px;
+        }
+
+        /* Header for Task Progress (Text alignment) */
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Task Progress text color and font */
+        .task-progress-wrapper span {
+            font-size: 1.1rem;
+            color: #00b4d8; /* Making text gradient blue */
+        }
+    </style>
+</head>
 
 {% endblock content %}
 <script src="{% static 'js/app.js' %}"></script>
