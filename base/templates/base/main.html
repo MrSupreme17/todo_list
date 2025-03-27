@@ -15,32 +15,27 @@
             background-color: #e3f2fd; /* Light blue background */
             font-family: "Nunito Sans", sans-serif;
             padding-top: 50px;
+            line-height: 1.6; /* More readable */
         }
 
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-            {
-                font-family: 'Raleway', sans-serif;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; /* Makes headers bold */
         }
 
-        a,
-        p {
-            color: #4b5156
+        a, p {
+            color: #ffffff;
+            font-size: 17px;
         }
 
         .container {
-            max-width: 600px; /* Make the card slightly wider */
-            margin: 40px auto; /* Add more space around the card */
+            max-width: 700px; /* Made the card wider */
+            margin: 50px auto; /* Added more space around the card */
             background-color: #fff;
             -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
             box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
-            border-radius: 10px; /* Rounded corners */
-            padding: 40px; /* More padding inside the card */
+            border-radius: 12px; /* Rounded corners */
+            padding: 45px; /* More padding inside the card */
         }
 
         .header-bar {
@@ -50,12 +45,12 @@
             color: #fff;
             padding: 15px; /* Increased padding for better spacing */
             border-radius: 8px 8px 0 0;
-            background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); /* New blue gradient */
+            background: linear-gradient(90deg, #00b4d8 0%, #0077b6 100%); /* Blue gradient */
         }
 
         .header-bar h1 {
             font-size: 24px; /* Increased font size */
-            font-weight: bold; /* Make the username bold */
+            font-weight: bold; /* Makes the username bold */
         }
 
 
@@ -70,7 +65,7 @@
             justify-content: space-between;
             padding: 25px; /* Increased padding for more space */
             margin-bottom: 10px; /* Added margin between task items */
-            background-color: #ffff;
+            background-color: none; /* Made the task background transparent */
             border-top: 1px solid rgb(226, 226, 226);
             border-radius: 8px; /* Slightly rounded edges */
         }
@@ -81,7 +76,7 @@
 
         .task-title a {
             text-decoration: none;
-            color: #4b5156;
+            color: #ffffff;
             margin-left: 10px;
             font-weight: bold; /* Makes task names bold */
             font-family: 'Poppins', sans-serif; /* Uses a stylish font */
@@ -147,11 +142,11 @@
             border: default; /* Adds default border */
             background-color: #00b4d8; /* Changes to a solid button */
             color: white; /* Text is white */
-            padding: 6px 11px; /* More padding for better look */
+            padding: 8px 14px; /* More padding for better look */
             font-size: 15px;
-            border-radius: 8px; /* More rounded */
+            border-radius: 30px; /* Rounded button corners */
             cursor: pointer;
-            transition: 0.3s; /* Smooth hover effect */
+            transition: 0.5s; /* Smooth hover effect */
         }
 
 /* Hover effect: Darker button on hover */
@@ -165,7 +160,7 @@
         textarea {
             border: 1px solid #ccc;
             border-radius: 5px;
-            padding: 10px;
+            padding: 11px;
             width: 90%;
             transition: 0.3s;
         }
@@ -198,9 +193,10 @@
         }
 
         .completed-task {
-            text-decoration: line-through; /* Strikethrough */
-            font-style: italic; /* Italicized */
-            color: #6c757d; /* Gray color for completed tasks */
+            text-decoration: line-through; /* Strikethrough on completed tasks */
+            text-decoration-color: rgb(255, 255, 255); /* Strikethrough coluor */
+            font-style: italic;
+            color: #ffffff;
         }
 
 /* Animated Background */
