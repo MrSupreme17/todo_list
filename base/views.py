@@ -71,21 +71,30 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'complete']
-    success_url =reverse_lazy('tasks')
+    fields = ['title', 'description', 'complete', 'due_date']  # Add due_date
+    success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
 
+    def get_form(self, form_class=None):
+        form = super(TaskCreate, self).get_form(form_class)
+        form.fields['due_date'].widget.attrs.update({'type': 'date'})  # Add date picker
+        return form
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'complete']
-    success_url =reverse_lazy('tasks')
+    fields = ['title', 'description', 'complete', 'due_date']  # Add due_date
+    success_url = reverse_lazy('tasks')
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)  # Prevents users from editing other users' tasks
+        return Task.objects.filter(user=self.request.user)  # Prevent users from editing others' tasks
+
+    def get_form(self, form_class=None):
+        form = super(TaskUpdate, self).get_form(form_class)
+        form.fields['due_date'].widget.attrs.update({'type': 'date'})  # Add date picker
+        return form
 
 
 class DeleteView(LoginRequiredMixin, DeleteView):

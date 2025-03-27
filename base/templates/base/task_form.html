@@ -6,15 +6,13 @@
     <a href="{% url 'tasks' %}">&#8592; Back</a>
 </div>
 
-
 <div class="card-body">
     <form method="POST" action="">
         {% csrf_token %}
-        {{form.as_p}}
+        {{ form.as_p }}  <!-- This will now include the due date field -->
         <input class="button" type="submit" value="Submit">
     </form>
 </div>
-
 
 {% endblock content %}
 <script src="{% static 'js/app.js' %}"></script>
