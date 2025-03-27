@@ -1,29 +1,35 @@
-{% extends 'base/main.html' %}
-{% load static %}
+{% extends 'base/main.html' %} 
+{% load static %} 
 {% block content %}
 
+<!-- Header bar for the register page -->
 <div class="header-bar">
-    <h1>Register</h1>
+    <h1>Register</h1> <!-- Page title -->
 </div>
 
 <div class="card-body">
+    <!-- Registration form -->
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Security token to prevent attacks -->
+
         <label>{{form.username.label}}</label>
-        {{form.username}}
+        {{form.username}} <!-- Input field for username -->
 
         <label>{{form.password1.label}}</label>
-        {{form.password1}}
+        {{form.password1}} <!-- Input field for password -->
 
         <label>{{form.password2.label}}</label>
-        {{form.password2}}
-        <input style="margin-top:10px ;" class="button" type="submit" value="Register">
+        {{form.password2}} <!-- Input field to confirm password -->
+
+        <!-- Register button -->
+        <input style="margin-top:10px;" class="button" type="submit" value="Register">
     </form>
+
+    <!-- Link to login page if the user already has an account -->
     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 </div>
 
-
-
-
 {% endblock content %}
+
+<!-- Link to external JavaScript file -->
 <script src="{% static 'js/app.js' %}"></script>

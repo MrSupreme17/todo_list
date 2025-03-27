@@ -1,24 +1,22 @@
 {% extends 'base/main.html' %}
-{% load static %}
+{% load static %}  <!-- Loads static files like CSS and JS -->
 {% block content %}
 
 <div class="header-bar">
-    <h1>Login</h1>
+    <h1>Login</h1>  <!-- Page heading for login -->
 </div>
 
 <div class="card-body">
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input class="button" type="submit" value="Login">
+    <form method="POST">  <!-- Form for user login -->
+        {% csrf_token %}  <!-- Security token to prevent cross-site request forgery -->
+        {{form.as_p}}  <!-- Renders the login form fields automatically -->
+        <input class="button" type="submit" value="Login">  <!-- Login button -->
     </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>  
+    <!-- Link to the registration page if the user doesn't have an account -->
 </div>
 
-
-
-
-
-
 {% endblock content %}
-<script src="{% static 'js/app.js' %}"></script>
+
+<script src="{% static 'js/app.js' %}"></script>  <!-- Links the JavaScript file for PWA -->
